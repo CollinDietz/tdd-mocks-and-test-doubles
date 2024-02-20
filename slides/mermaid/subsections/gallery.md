@@ -194,8 +194,7 @@ erDiagram
 ```
 
 ---
-layout: two-cols
----
+
 # Gantt Chart
 ```
 gantt
@@ -208,10 +207,6 @@ gantt
     Task in sec      :2014-01-12  , 12d
     another task      : 24d
 ```
-
-::right::
-<br>
-<br>
 
 ```mermaid
 gantt
@@ -258,8 +253,7 @@ journey
 ```
 
 ---
-layout: two-cols
----
+
 # Git Graph
 ```
 gitGraph
@@ -274,10 +268,6 @@ gitGraph
     commit
     commit
 ```
-
-::right::
-<br>
-<br>
 
 ```mermaid
 gitGraph
@@ -410,10 +400,13 @@ layout: two-cols
 ```
 xychart-beta
     title "Sales Revenue"
-    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    x-axis [jan, feb, mar, apr, may,
+    jun, jul, aug, sep, oct, nov, dec]
     y-axis "Revenue (in $)" 4000 --> 11000
-    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
-    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    bar [5000, 6000, 7500, 8200, 9500, 10500,
+    11000, 10200, 9200, 8500, 7000, 6000]
+    line [5000, 6000, 7500, 8200, 9500, 10500,
+    11000, 10200, 9200, 8500, 7000, 6000]
 ```
 
 ::right::

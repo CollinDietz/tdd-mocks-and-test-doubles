@@ -126,8 +126,7 @@ src: ./subsections/gallery.md
   - Online live render editor
   - Has sample diagram
   - Supports saving and loading
-  - Exporting images
-  - Can generate static links to images
+  - Exporting images and static image links
 - Mermaid Chart: https://www.mermaidchart.com/
   - Beefed up Mermaid Live
     - "commercial product built on top of the open source project Mermaid."
