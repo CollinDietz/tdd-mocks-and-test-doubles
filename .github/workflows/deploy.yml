@@ -42,7 +42,8 @@ jobs:
       - name: Build slides
         run: |
           mkdir -p dist
-          /bin/ls slides | while read line ; do pnpm -F "$line" run build --base "/${{ github.event.repository.name }}/$line" -o "../../dist/$line" ; cp -rT slides/$line/images dist/$line/; done
+          /bin/ls slides | while read line ; do pnpm -F "$line" run build --base "/${{ github.event.repository.name }}/$line" -o "../../dist/$line" ; done
+          /bin/ls slides | while read line ; do [ -d "slides/$line/images" ] && (cp -r slides/$line/images dist/$line/ && echo "Copied slides/$line/images images") || echo "Source directory does not exist."; done
       - name: Generate Directory Listings
         uses: kxxt/github-pages-directory-listing@v2
         with:
