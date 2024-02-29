@@ -15,13 +15,12 @@ layout: two-cols
 - Requirement Diagram
 - Gitgraph Diagram
 - Mindmap Diagram
-- Timeline Diagram
 
 ::right::
 <br>
 <br>
-<br>
 
+- Timeline Diagram
 - ZenUML
 - Sankey
 - C4 Diagrams 🚧

@@ -37,11 +37,11 @@ layout: intro
 # Why is it good? (Me)
 &nbsp;
 
-Its text based
-- Means its super light weight
+It's text based
+- Means it's super light weight
   - 5-30ish lines of text
   - Can just send it over slack
-- Dual representation
+- Dual representation (text AND image)
 - Easy to edit
 - We have a _ton_ of tools for managing text
   - Use your favorite editor
@@ -53,7 +53,7 @@ Its text based
 # Why is it good? (Me)
 &nbsp;
 
-Its simple (ish)
+It's simple (ish)
 - Super fast to learn
 - Usually pretty human readable
 - You don't have direct control of layout
@@ -118,10 +118,15 @@ src: ./subsections/gallery.md
 
 ---
 
-# What are good tools?
+# What is good documentation?
 - Mermaid Documentation: https://mermaid.js.org/intro/
-  - Well written and simple
+  - Well written and simple (these slides are mostly taken from it)
   - Pick the diagram you want and see all your options
+- Mermaid Cheat Sheet: https://jojozhuang.github.io/tutorial/mermaid-cheat-sheet/
+
+---
+
+# What are good editors?
 - Mermaid Live:  https://mermaid.live
   - Online live render editor
   - Has sample diagram
@@ -167,3 +172,7 @@ backgroundSize: 70%
   - Store it somewhere it can be extended
     - On the page somewhere
 - Show example links
+
+---
+src: ./subsections/advanced.md
+---
