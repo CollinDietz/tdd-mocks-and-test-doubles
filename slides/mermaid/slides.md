@@ -6,6 +6,14 @@ layout: intro
 
 ## What is it, Why is it awesome
 
+---
+
+# Too Long; Didn't Listen
+
+- Mermaid makes common diagrams from a simple text based input
+- The first party documentation is really good: https://mermaid.js.org/intro/getting-started.html
+- There is a free online editor-render that is good: https://mermaid.live
+- It works in most places we commonly do: Github, Markdown
 
 ---
 
@@ -111,6 +119,15 @@ sequenceDiagram
     John-->>-Alice: Hi Alice, I can hear you!
     John-->>-Alice: I feel great!
 ```
+
+---
+
+# What is happening on the backend?
+- The tool is JS based
+- Puts your input into D3.js, a popular JS visualization library
+  - https://d3js.org/
+  - If you see a graph on a website, likely being rendered with this
+- This gives you something that can easily be rendered anywhere HTML is
 
 ---
 src: ./subsections/gallery.md
