@@ -180,6 +180,36 @@ backgroundSize: 70%
 # Integrated with Obsidian!
 
 ---
+layout: two-cols
+---
+
+# Integrated with Markdown!
+- That includes sli.dev
+
+~~~
+``` mermaid
+flowchart TD
+    A[Christmas] -->|Get money| B(Go shopping)
+    B --> C{Let me think}
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[fa:fa-car Car]
+```
+~~~
+
+
+::right::
+
+```mermaid
+flowchart TD
+    A[Christmas] -->|Get money| B(Go shopping)
+    B --> C{Let me think}
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[fa:fa-car Car]
+```
+
+---
 
 # Not Integrated with Confluence 😭
 - Two options
