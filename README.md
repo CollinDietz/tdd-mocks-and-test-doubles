@@ -1,10 +1,10 @@
-# mermaid-slides
+# tdd-mocks-and-test-doubles
 
 A sli.dev presentation showing how nice and wonderful mermaid is
 
 ## Slides
 
-https://collindietz.github.io/mermaid-slides/
+https://collindietz.github.io/tdd-mocks-and-test-doubles/
 
 ## Features
 
