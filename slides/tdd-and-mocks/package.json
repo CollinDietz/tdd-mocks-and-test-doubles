@@ -1,5 +1,5 @@
 {
-  "name": "mermaid",
+  "name": "tdd-and-mocks",
   "private": true,
   "scripts": {
     "build": "slidev build",
