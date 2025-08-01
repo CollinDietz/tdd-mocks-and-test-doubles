@@ -4,7 +4,7 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --with-clicks --dark --output mocks"
   },
   "dependencies": {
     "@slidev/cli": "^52.1.0",
