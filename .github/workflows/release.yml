@@ -57,7 +57,7 @@ jobs:
       - name: Upload PDFs to Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            $(find slides -name '*.pdf')
+          tag_name: t_${{ github.sha }}
+          files: slides/**/*.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
