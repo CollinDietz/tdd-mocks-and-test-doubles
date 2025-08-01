@@ -7,20 +7,20 @@ Or what is a Mock?
 
 ---
 
-# Why do need
+# Why Do We Need
 
 - Test's need ways to _prove_ what we want to happen is happening
   - If test's just ran the code you wouldn't really prove much
 - For simple things, just check the output
 
-```
+```c
 uint8_t result = some_func(1,1);
 CHECK_EQUAL(10, 1);
 ```
 
 - What if the module we want to test _depends_ on another module?
   - In an object-oriented world you want something that can fulfil the responsibilities of an object
-```
+```c
 SomeComplicatedModule_Init(instance, &someOtherComplicatedModule);
 SomeComplicatedModule_DoSomething();
 // prove that something has happened to someOtherComplicatedModule
@@ -46,7 +46,7 @@ SomeComplicatedModule_DoSomething();
 
 - Often we only need to prove what our module does to the data maintained by another module
 - Think about blinky
-```
+```c
 GivenBlinkyInit();
 LedShouldBe(ON);
 After(SomeBlinkPeriod);
@@ -76,7 +76,7 @@ a --> |Read| Tests
 
 # When Is This Not Enough?
 
-```
+```c
 GivenBlinkyInit();
 LedShouldBe(ON);
 After(SomeBlinkPeriod - 1)
@@ -106,7 +106,7 @@ LedShouldBe(Off);
   - A test double shows what state the LED is in
   - A mock shows how and in what order the LED is asked to change
 
-```
+```c
 TheLedShouldBeTurned(On);
 WhenBlinkyInit();
 
@@ -119,7 +119,7 @@ After(SomeBlinkPeriod);
 
 ---
 
-# How does this happen?
+# How Does This Happen?
 
 - The mock doesn't need to track the _state_ of the module
 - It just needs to remember what _should_ happen (in order*) and compare that to what _does_ happen
@@ -145,7 +145,7 @@ end
 
 ---
 
-# How does this happen?
+# How Does This Happen?
 - The test builds up a list of "Expected Calls"
 - When the mocking system sees an "Actual Call"
   - It looks at the list of expected calls
@@ -156,9 +156,9 @@ end
 layout: two-cols
 ---
 
-# How does this happen?
+# How Does This Happen?
 
-```{1}
+```c{1}
 TheLedShouldBeTurned(On);
 WhenBlinkyInit();
 
@@ -186,9 +186,9 @@ a ~~~ Actual
 layout: two-cols
 ---
 
-# How does this happen?
+# How Does This Happen?
 
-```{2}
+```c{2}
 TheLedShouldBeTurned(On);
 WhenBlinkyInit();
 
@@ -217,9 +217,9 @@ a ---|"✅"| b
 layout: two-cols
 ---
 
-# How does this happen?
+# How Does This Happen?
 
-```{4,5}
+```c{4,5}
 TheLedShouldBeTurned(On);
 WhenBlinkyInit();
 
@@ -248,9 +248,9 @@ a ---|"✅"| b
 layout: two-cols
 ---
 
-# How does this happen?
+# How Does This Happen?
 
-```{7}
+```c{7}
 TheLedShouldBeTurned(On);
 WhenBlinkyInit();
 
@@ -280,9 +280,9 @@ a ---|"✅"| b
 layout: two-cols
 ---
 
-# How does this happen?
+# How Does This Happen?
 
-```{8}
+```c{8}
 TheLedShouldBeTurned(On);
 WhenBlinkyInit();
 
@@ -316,7 +316,7 @@ layout: two-cols
 
 # What If Something Had Happened?
 
-```{4,5}
+```c{4,5}
 TheLedShouldBeTurned(On);
 WhenBlinkyInit();
 
