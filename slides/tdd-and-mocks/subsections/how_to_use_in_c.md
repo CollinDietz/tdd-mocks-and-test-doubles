@@ -351,3 +351,80 @@ TEST(mocks, simpletest)
    CHECK_EQUAL(100, result);
 }
 ```
+---
+
+# onObject()
+
+- A special form of `withParameter()`
+- Used on the instance variable
+- Makes sure the call is coming from the right copy of the mock
+
+<br>
+
+```c{|3}
+mock()
+      .actualCall("Read")
+      .onObject(instance)
+```
+
+---
+
+# More Real Example
+
+- Expected
+```c
+static void Write(I_Gpio_t *instance, const bool state)
+{
+   mock()
+      .actualCall("Write")
+      .onObject(instance)
+      .withParameter("state", state);
+}
+```
+
+- Actual
+
+```c
+Gpio_Mock_t gpioMock;
+
+mock.expectOneCall("write").onObject(&gpioMock).withParameter("state", off);
+Blinky_Init(&blinkyModule, &gpioMock.interface);
+```
+
+---
+
+# Other Functions
+
+- Expecting Several Calls
+  - `mock().expectNCalls(5, "productionCode");`
+  - In TDD I tend to just for loop my `expectOneCall`
+- Buffers
+  - When `uint8_t *buffer`
+  - `.withMemoryBufferParameter("buffer", buffer, length);`
+- Output Params
+  - Same idea as returning, but for when is a modified pass by reference
+  - `mock().expectOneCall("Foo").withOutputParameterReturning("bar", &outputValue, sizeof(outputValue));`
+  - `mock().actualCall("Foo").withOutputParameter("bar", bar);`
+
+---
+
+# Expecting Nothing
+
+- If you want to say no calls will occur, you don't actually need to do anything
+- We often define `NothingShouldHappen()`
+```
+void NothingShouldHappen()
+{
+
+}
+```
+
+- Lets you be explicit
+```
+NothingShouldHappen();
+WhenThingHappens();
+```
+
+- Mocking framework has a similiar option
+  - `mock().expectNoCall("productionCode");`
+  - This is the same as doing nothing though
