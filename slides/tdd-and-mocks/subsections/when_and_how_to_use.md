@@ -106,7 +106,7 @@ layout: two-cols
 
 - Actual call already exists
   - test/Mocks/DigitalOutput_Mock.cpp
-```c
+```c{|3}
 static void Write(I_DigitalOutput_t *instance, bool state)
 {
    mock().actualCall("Write")
@@ -124,7 +124,7 @@ static void Write(I_DigitalOutput_t *instance, bool state)
 
 <br>
 
-```c
+```c{|3}
 void LedShouldBeSetTo(bool state)
 {
    mock().expectOneCall("Write")
@@ -137,7 +137,7 @@ void LedShouldBeSetTo(bool state)
 
 # Write `Should ... When` tests
 
-```c
+```c{|1,2|4,5|7,8}
 LedShouldBeSetTo(Off);
 WhenModuleIsInitialized();
 
@@ -218,7 +218,7 @@ Fails!
 
 # Pitfalls
 
-## Enable/ Disable
+## Enable/Disable
 - You can momentarily turn off and on the mocking framework
 ```c
 mock().disable();

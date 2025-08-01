@@ -9,8 +9,8 @@ Or what is a Mock?
 
 # Why Do We Need
 
-- Test's need ways to _prove_ what we want to happen is happening
-  - If test's just ran the code you wouldn't really prove much
+- Test's need ways to _prove_ that what we want to happen is happening
+  - If tests just ran the code you wouldn't really prove much
 - For simple things, just check the output
 
 ```c
@@ -31,7 +31,7 @@ SomeComplicatedModule_DoSomething();
 
 # Testing Dependencies
 
-- Unit tests for a module with dependencies we broadly have two options (at GEA)
+- Here we broadly have two options for unit tests for a module with dependencies
   - TestDoubles
   - Mocks
 - These are "not GE special names"
@@ -48,9 +48,9 @@ SomeComplicatedModule_DoSomething();
 - Think about blinky
 ```c
 GivenBlinkyInit();
-LedShouldBe(ON);
-After(SomeBlinkPeriod);
 LedShouldBe(Off);
+After(SomeBlinkPeriod);
+LedShouldBe(On);
 ```
 
 - Our primary concern is what Blinky does to the _state_ of the Led
@@ -69,7 +69,7 @@ subgraph Tests
 end
 
 Blinky --> |"Write(ledTestDouble)"| a
-a --> |Read| Tests
+Tests --> |Read| a
 ```
 
 ----
@@ -78,17 +78,17 @@ a --> |Read| Tests
 
 ```c
 GivenBlinkyInit();
-LedShouldBe(ON);
-After(SomeBlinkPeriod - 1)
-LedShouldBe(On);
-After(1);
 LedShouldBe(Off);
+After(SomeBlinkPeriod - 1)
+LedShouldBe(Off);
+After(1);
+LedShouldBe(On);
 ```
 
 - Something that toggles the LED _way_ more often would still pass this test
 - We prove that
-  - at `t=0` and `t=SomeBlinkPeriod-1` the LED is on
-  - at `t=SomeBlinkPeriod` the LED is off
+  - at `t=0` and `t=SomeBlinkPeriod-1` the LED is off
+  - at `t=SomeBlinkPeriod` the LED is on
 - But the LED could _technically_ be anything at any other time
   - We might not care to prove something more rigorous
   - But what if it interacts with _many_ other modules?
@@ -104,17 +104,17 @@ LedShouldBe(Off);
   - Data used in interactions
 - For Blinky
   - A test double shows what state the LED is in
-  - A mock shows how and in what order the LED is asked to change
+  - A mock shows how the LED is asked to change
 
 ```c
-TheLedShouldBeTurned(On);
+TheLedShouldBeTurned(Off);
 WhenBlinkyInit();
 
 NothingShouldHappen()
 After(SomeBlinkPeriod - 1);
 
-TheLedShouldBeTurned(Off);
-After(SomeBlinkPeriod);
+TheLedShouldBeTurned(On);
+After(1);
 ```
 
 ---
@@ -122,7 +122,7 @@ After(SomeBlinkPeriod);
 # How Does This Happen?
 
 - The mock doesn't need to track the _state_ of the module
-- It just needs to remember what _should_ happen (in order*) and compare that to what _does_ happen
+- It just needs to remember what _should_ happen and compare that to what _does_ happen
 
 ```mermaid
 graph LR

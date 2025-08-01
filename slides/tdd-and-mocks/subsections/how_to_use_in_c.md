@@ -20,7 +20,7 @@ https://cpputest.github.io/mocking_manual.html
 
 # Basic Expectations And Actuals
 
-- All mocking calls are make to the global mock object
+- All mocking calls are made to the global mock object
   - `mock()`
 - This has many available functions
 - The two most basic are
@@ -324,6 +324,39 @@ TEST(mocks, simpletest)
 
 # Returning Values
 
+- For mocked functions that return you can chose what is used
+- Sort of "reversed" from normal operation
+- You set the data in the test and the code "gets" it
+- The expected gets told which value to return
+  - `mock().expectOneCall("SomeFunction").andReturnValue(someValue);`
+- The actual fetches and uses that
+  - `return mock().actualCall("SomeFunction").returnIntValue();`
+
+```mermaid
+graph LR
+subgraph Tests
+   expectOneCall
+end
+
+mock_["mock()"]
+
+subgraph Module
+end
+
+subgraph Mock
+ actualCall
+end
+
+Tests --> mock_
+mock_ --> actualCall
+actualCall --> Module
+
+```
+
+---
+
+# Returning Values
+
 ```c{|1,8,13,18,22,23,24}
    void ShouldCallSomeFunction(bool state, TimerTicks_t ticks, uint8_t retries, uint16_t result)
    {
@@ -358,6 +391,7 @@ TEST(mocks, simpletest)
 - A special form of `withParameter()`
 - Used on the instance variable
 - Makes sure the call is coming from the right copy of the mock
+  - This is important when we use common mocks, where you may have more then one instance
 
 <br>
 

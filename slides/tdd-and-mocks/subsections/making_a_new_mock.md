@@ -120,9 +120,3 @@ static bool Read(I_Gpio_t *instance)
       .returnBoolValue();
 }
 ```
-
----
-layout: intro
----
-
-# And Thats It!

@@ -2,7 +2,7 @@
 layout: intro
 ---
 
-# Mocks And TDD
+# Mocks and TDD
 
 ## What, When, How and Why
 
@@ -12,10 +12,10 @@ layout: intro
 
 # Outline
 
-1. Mocks Vs TestDoubles
+1. Mocks vs TestDoubles
 2. How to Use In C
-3. When And How to Use
-4. Making A New Mock
+3. When and How to Use
+4. Making a New Mock
 
 ---
 src: ./subsections/mocks_vs_testdoubles.md
@@ -29,3 +29,8 @@ src: ./subsections/when_and_how_to_use.md
 ---
 src: ./subsections/making_a_new_mock.md
 ---
+---
+layout: intro
+---
+
+# And Thats It!
