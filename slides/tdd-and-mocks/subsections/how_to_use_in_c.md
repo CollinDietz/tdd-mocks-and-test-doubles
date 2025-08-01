@@ -326,7 +326,7 @@ TEST(mocks, simpletest)
 
 - For mocked functions that return you can chose what is used
 - Sort of "reversed" from normal operation
-- You set the data in the test and the code "gets" it
+  - The test knows what the fake data is and the mock "doesn't"
 - The expected gets told which value to return
   - `mock().expectOneCall("SomeFunction").andReturnValue(someValue);`
 - The actual fetches and uses that
