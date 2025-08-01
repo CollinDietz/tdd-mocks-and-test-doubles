@@ -4,7 +4,7 @@ A sli.dev presentation showing how nice and wonderful mermaid is
 
 ## Slides
 
-https://collindietz.github.io/tdd-mocks-and-test-doubles/
+https://collindietz.github.io/tdd-mocks-and-test-doubles/tdd-and-mocks/
 
 ## Features
 
