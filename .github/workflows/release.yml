@@ -5,7 +5,7 @@ on:
       - "slides/**"
   workflow_dispatch:
 jobs:
-  deploy:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,7 +47,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: t_${{ github.sha }}
           release_name: t_${{ github.sha }}
