@@ -285,7 +285,7 @@ TEST(mocks, simpletest)
 }
 ```
 
-```bash{all|2,3,4,7,8}
+```bash{all|2,3,4,7,8}{at:1}
 ./test/Tests/Action/mocks_Test.cpp:27: error: Failure in TEST(mocks, simpletest)
         Mock Failure: Unexpected parameter value to parameter "state" to function "SomeFunction": <false>
         EXPECTED calls that WERE NOT fulfilled related to function: SomeFunction

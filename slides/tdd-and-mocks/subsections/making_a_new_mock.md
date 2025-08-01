@@ -93,7 +93,7 @@ void Gpio_Mock_Init(Gpio_Mock_t *instance)
 
 # 4. Fill Out the Mock Details for each Function
 
-```c{|none}
+```c{||none}
 static void Write(I_Gpio_t *instance, const bool state)
 {
    mock()
@@ -102,7 +102,7 @@ static void Write(I_Gpio_t *instance, const bool state)
       .withParameter("state", state);
 }
 ```
-```c{none||none}
+```c{|none||none}{at:1}
 static void SetDirection(I_Gpio_t *instance, const GpioDirection_t direction)
 {
    mock()
@@ -111,7 +111,7 @@ static void SetDirection(I_Gpio_t *instance, const GpioDirection_t direction)
       .withParameter("direction", direction);
 }
 ```
-```c{none|}
+```c{|none|none|}{at:1}
 static bool Read(I_Gpio_t *instance)
 {
    return mock()

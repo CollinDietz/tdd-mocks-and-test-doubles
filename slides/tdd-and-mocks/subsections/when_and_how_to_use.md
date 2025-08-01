@@ -124,7 +124,7 @@ static void Write(I_DigitalOutput_t *instance, bool state)
 
 <br>
 
-```c{|3}
+```c{|3}{at:1}
 void LedShouldBeSetTo(bool state)
 {
    mock().expectOneCall("Write")
