@@ -1,0 +1,63 @@
+name: Release Slides
+on:
+  push:
+    paths:
+      - "slides/**"
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 23.11.1
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --shamefully-hoist
+      - name: Build slides
+        run: |
+          /bin/ls slides | while read line ; do pnpm -F "$line" run export ; done
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN:
+        with:
+          tag_name: t_${{ github.sha }}
+          release_name: t_${{ github.sha }}
+          draft: false
+          prerelease: false
+
+      - name: Upload PDFs to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            $(find slides -name '*.pdf')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
